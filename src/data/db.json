@@ -1,0 +1,28 @@
+{
+  "tasks": [
+    {
+      "id": "1",
+      "name": "Completar informe",
+      "description": "Finalizar el informe ",
+      "checked": true
+    },
+    {
+      "id": "2",
+      "name": "Reunión",
+      "description": "Asistir a la reunión ",
+      "checked": true
+    },
+    {
+      "id": "3",
+      "name": "Actualizar documentación",
+      "description": "Revisar y actualizar la documentación del proyecto",
+      "checked": false
+    },
+    {
+      "id": "4",
+      "name": "Ejercicio",
+      "description": "Ir al gimnasio 1 hora",
+      "checked": false
+    }
+  ]
+}
