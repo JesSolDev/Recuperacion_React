@@ -26,7 +26,7 @@ const TaskList = ({ task }) => {
         display: 'flex',
         justifyContent: 'space-between',
         alignItems: 'center',
-        color: 'white'
+        color: 'white',
       }}
     >
       <div>
