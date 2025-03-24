@@ -8,9 +8,9 @@ export const useTaskContext = () => {
 
 export const TaskProvider = ({ children }) => {
     const [tasks, setTasks] = useState([]);
-    const API_URL = "http://localhost:3001/tasks";
+    const API_URL = "http://localhost:5000/api/tasks";
     const [error,setError] = useState("")
-    const [loading,setLoading] = useState("true")
+    const [loading,setLoading] = useState(true)
 
   useEffect(() => {
     getTasks();
@@ -28,7 +28,7 @@ export const TaskProvider = ({ children }) => {
         setError(error)
       console.error('Error fetching tasks:', error);
     } finally{
-        setLoading("false")
+        setLoading(false)
     }
   };
 
@@ -52,7 +52,7 @@ export const TaskProvider = ({ children }) => {
       setError(error)  
       console.error('Error creating task:', error);
     }finally{
-        setLoading("false")
+        setLoading(false)
     }
   };
 
@@ -61,12 +61,12 @@ export const TaskProvider = ({ children }) => {
       await fetch(`${API_URL}/${taskId}`, {
         method: 'DELETE',
       });
-      setTasks(tasks.filter(task => task.id !== taskId));
+      setTasks(tasks.filter(task => task._id !== taskId));
     } catch (error) {
         setError(error)
       console.error('Error removing task:', error);
     } finally{
-        setLoading("false")
+        setLoading(false)
     }
   };
   const updateTask = async (taskId, updatedTask) => {
@@ -80,7 +80,7 @@ export const TaskProvider = ({ children }) => {
         });
 
         const data = await response.json();
-        setTasks(tasks.map(t => t.id === taskId ? data : t));
+        setTasks(tasks.map(t => t._id === taskId ? data : t));
     } catch (error) {
         setError(error.message);
         console.error('Error updating task:', error);
@@ -91,7 +91,7 @@ export const TaskProvider = ({ children }) => {
 
   const changeTaskStatus = async (taskId) => {
     try {
-      const task = tasks.find(t => t.id === taskId);
+      const task = tasks.find(t => t._id === taskId);
       const updatedTask = { ...task, checked: !task.checked };
       
       const response = await fetch(`${API_URL}/${taskId}`, {
@@ -103,12 +103,12 @@ export const TaskProvider = ({ children }) => {
       });
       
       const data = await response.json();
-      setTasks(tasks.map(t => t.id === taskId ? data : t));
+      setTasks(tasks.map(t => t._id === taskId ? data : t));
     } catch (error) {
         setError(error)
       console.error('Error updating task status:', error);
     } finally{
-        setLoading("false")
+        setLoading(false)
     }
   };
 
@@ -130,5 +130,4 @@ export const TaskProvider = ({ children }) => {
     </TaskContext.Provider>
   );
 };
-const API_URL = '/db.json';
 

@@ -21,7 +21,7 @@ export const router = createBrowserRouter([
         element: <NewTasksPage />
       },
       {
-        path: '/:id',
+        path: '/:_id',
         element: <EditTaskPage />
       }
     ]

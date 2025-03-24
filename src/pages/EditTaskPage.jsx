@@ -5,10 +5,10 @@ import { Link } from 'react-router-dom';
 
 const EditTaskPage = () => {
   const { tasks, changeTaskStatus, updateTask } = useTaskContext();
-  const { id } = useParams();
+  const { _id } = useParams();
   const navigate = useNavigate();
   
-  const task = tasks.find(t => t.id === id);
+  const task = tasks.find(t => t._id === _id);
   const [updatedTask, setUpdatedTask] = useState(task || { name: '', description: '', checked: false });
 
   useEffect(() => {
@@ -27,12 +27,12 @@ const EditTaskPage = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await updateTask(id, updatedTask);
+    await updateTask(_id, updatedTask);
     navigate('/');
   };
 
   const handleStatusChange = async () => {
-    await changeTaskStatus(id);
+    await changeTaskStatus(_id);
   };
 
   return (

@@ -16,7 +16,7 @@ const HomePage = () => {
         <h3>(Verde:completas 
            Amarillo:incompletas)</h3>
         {tasks?.map((task) => (  
-          <TaskList key={task.id} task={task} />
+          <TaskList key={task._id} task={task} />
         ))}
       </div>
     </div>
